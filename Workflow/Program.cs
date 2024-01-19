@@ -136,6 +136,7 @@ namespace WorkflowExample
 
 
             //擷取工作流程的輸出引數
+            /*
             AutoResetEvent syncEvent = new AutoResetEvent(false);
 
             WorkflowApplication wfApp = new WorkflowApplication(new DiceRoll());
@@ -167,8 +168,32 @@ namespace WorkflowExample
 
             wfApp.Run();
             syncEvent.WaitOne();
+            */
             #endregion
 
+            #region ActivityXamlServices.Load 需要安裝 UiPath.Workflow
+            // 讀取 xaml 字串
+            // string xamlString = "<Activity xmlns=\"http://schemas.microsoft.com/netfx/2009/xaml/activities\"><Sequence><WriteLine Text=\"Hello World!\" /></Sequence></Activity>";
+            // Activity activity = ActivityXamlServices.Load(new StringReader(xamlString));
+
+            // var helloWorldActivity = ActivityXamlServices.Load(new StringReader(xamlString));
+            // System.Activities.WorkflowInvoker.Invoke(helloWorldActivity);
+
+            // 讀取 Workflow1.xaml
+            using (StreamReader sr = new StreamReader(@".\Workflow1.xaml"))
+            {
+                string line;
+                string xamlString = string.Empty;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    xamlString += line;
+                }
+
+                var helloWorldActivitys = ActivityXamlServices.Load(new StringReader(xamlString));
+                WorkflowInvoker.Invoke(helloWorldActivitys);
+            }
+            #endregion
         }
     }
 }
