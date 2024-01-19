@@ -2,12 +2,12 @@
 
 public class MyMath
 {
-    public int square(int num)
+    public int Square(int num)
     {
         return num * num;
     }
 
-    public int cube(int num)
+    public int Cube(int num)
     {
         return num * num * num;
     }

@@ -22,3 +22,13 @@
 # 修改 MyProgram 主程式
 
 `dotnet run --project MyProgram/MyProgram.csproj`
+
+# 建立單元測試
+
+1. `dotnet new mstest -o MyMathLibraryTest`
+2. `dotnet sln add MyMathLibraryTest/MyMathLibraryTest.csproj`
+3. `dotnet add MyMathLibraryTest/MyMathLibraryTest.csproj reference MyMathLibrary/MyMathLibrary.csproj`
+
+# 執行單元測試
+
+1. `dotnet test MyMathLibraryTest/MyMathLibraryTest.csproj`
